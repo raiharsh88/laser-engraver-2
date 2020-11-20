@@ -114,7 +114,7 @@ export default function SignPage(props) {
     }
 
     async function printCanvas() {
-        const canvasURL = canvasRef.current.toDataURL("image/jpg", 0.2);
+        const canvasURL = canvasRef.current.toDataURL("image/png");
         const FileData = new FormData();
         const canvasFile = await dataURItoBlob(canvasURL);
         FileData.append('canvas', canvasFile);

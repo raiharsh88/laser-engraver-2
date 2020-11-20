@@ -15,13 +15,19 @@ const Canvas = function (props) {
         canvas.style.width = `${canvasRef.current.parentNode.clientWidth}px`;
         canvas.style.height = `${canvasRef.current.parentNode.clientHeight}px`;
 
+
         const context = canvas.getContext("2d");
+
         context.scale(1, 1);
         context.lineCap = "round";
         context.strokeStyle = "black";
         context.lineWidth = 6;
+        context.fillStyle = 'blue';
+        context.globalAlpha = 1;
+
         contextRef.current = context;
-        context.fillStyle = 'white';
+
+        // Make sure the image is loaded first otherwise nothing will draw.
 
         props.setRef(canvasRef, contextRef);
 
