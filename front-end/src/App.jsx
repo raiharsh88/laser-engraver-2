@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Route, Redirect, Switch, useHistory, useLocati
 import SignPage from "./pages/sign";
 import Entry from "./pages/entry";
 import Gallery from './pages/gallery'
-
+import './App.css'
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 function App() {
   const location = useLocation();
+
+
+
   return (
 
 

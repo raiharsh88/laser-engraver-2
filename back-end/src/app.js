@@ -67,6 +67,7 @@ app.get("/check-file", (req, res) => {
   );
   const exists = fs.existsSync(destFolder);
 
+  return res.json({ err: "service unavailable" });
   if (!exists) {
     return res.status(200).json({ msg: "file not found" });
   } else {
@@ -79,6 +80,8 @@ app.get("/new-file", (req, res) => {
     __dirname,
     "../public/images/uploads/sample1.png"
   );
+
+  return res.json({ err: "service unavailable" });
   const exists = fs.existsSync(destFolder);
   if (!exists) {
     return res.status(200).json({ msg: "file not found" });

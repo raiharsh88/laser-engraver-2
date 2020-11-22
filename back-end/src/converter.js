@@ -19,10 +19,9 @@ const converter = function (req, res, next) {
     );
 
     sharp(fs.readFileSync(req.file.path))
-      .resize(250, 128)
+      .resize(250, 128, { fit: "contain" })
       .toFile(destFolder, (err, info) => {
         console.log(err, info);
-
         fs.unlinkSync(req.file.path);
         if (err) return reject(err);
         return resolve(info);

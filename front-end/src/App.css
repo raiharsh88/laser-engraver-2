@@ -7,6 +7,15 @@
   pointer-events: none;
 }
 
+@media only screen and (max-width: 767px) {
+  .main-cvs {
+    display: none !important;
+  }
+}
+
+body > #root > div {
+  height: 100vh;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
