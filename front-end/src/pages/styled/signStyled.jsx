@@ -4,7 +4,6 @@ const Container = styled.div`
 width:100%;
 height:100vh;
 overflow:hidden;
-background-image:url('/images/theme.jpg');
 display:flex ; 
 flex-direction :'column';
 background-position:center;
@@ -13,12 +12,27 @@ background-size:cover;
 justify-content:center;
 align-items :center;
 
+
 `
 
+const Blur = styled.div`
+background-image:url('/images/theme.jpg');
+
+position:absolute;
+z-index:-1;
+width:100%;
+height:100%;
+top:0;
+bottom:0;
+left:0;
+right:0;
+filter: blur(2px);
+  -webkit-filter: blur(2px);
+`
 
 const NavTab = styled.div`
 width:50%;
-height:50%;
+height:40%;
 background-color:rgba(30, 30 ,30 ,0.9);
 border-radius:15px;
 border-top-right-radius:0;
@@ -33,7 +47,7 @@ align-items:center;
 
 const ButtonRow = styled.div`
 width:auto;
-height:50%;
+height:40%;
 margin:0;
 display:flex;
 flex-direction:column;
@@ -168,4 +182,4 @@ color:${props => props.bold === true ? 'rgb(255, 48, 69)' : 'white'};
 `
 
 
-export { Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper }
+export { Blur, Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper }

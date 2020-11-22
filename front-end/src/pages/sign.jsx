@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Canvas from './canvas'
 import { NavLink } from 'react-router-dom';
 
-import { Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper } from './styled/signStyled'
+import { Blur, Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper } from './styled/signStyled'
 const postConfig = {
     method: 'POST',
     mode: 'cors',
@@ -104,6 +104,7 @@ export default function SignPage(props) {
 
     return (
         <Container>
+            <Blur />
             {modal === true ? <ModalWrapper>
                 <Modal>
                     <button onClick={() => printCanvas()}>Confirm</button><button onClick={() => setModal(false)}>Cancel</button>
