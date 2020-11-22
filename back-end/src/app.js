@@ -51,12 +51,40 @@ app.post("/image-upload", (req, res, next) => {
 
     await converter(req, res, next)
       .then((msg) => {
-        res.json({ msg: "data received" });
+        res.status(200).json({ status: 200, msg: "OK" });
       })
       .catch((err) => {
-        res.status(500).json({ msg: "SERVER_INTERNAL_ERROR" });
+        res.status(500).json({ status: 500, msg: "SERVER_INTERNAL_ERROR" });
       });
     //
+  });
+});
+
+app.get("/check-file", (req, res) => {
+  const destFolder = path.join(
+    __dirname,
+    "../public/images/uploads/sample1.png"
+  );
+  const exists = fs.existsSync(destFolder);
+
+  if (!exists) {
+    return res.status(200).json({ msg: "file not found" });
+  } else {
+    res.json({ msg: "new" });
+  }
+});
+
+app.get("/new-file", (req, res) => {
+  const destFolder = path.join(
+    __dirname,
+    "../public/images/uploads/sample1.png"
+  );
+  const exists = fs.existsSync(destFolder);
+  if (!exists) {
+    return res.status(200).json({ msg: "file not found" });
+  }
+  res.sendFile(destFolder, (err) => {
+    fs.unlinkSync(destFolder);
   });
 });
 

@@ -25,13 +25,18 @@ background-repeat:no-repeat;
 background-size:cover;
 justify-content:center;
 align-items :center;
+
+
+@media (max-width:767px){
+    flex-direction:column;
+}
 `
 
 
 const NavTab = styled.div`
 width:50%;
 height:50%;
-background-color:rgba(220, 220 ,220 ,0.9);
+background-color:rgba(30, 30 ,30 ,0.9);
 border-radius:15px;
 border-top-right-radius:0;
 border-bottom-right-radius:0;
@@ -56,6 +61,10 @@ border-bottom-right-radius:15px;
 background-color:rgba(0, 0 ,0 ,0.8);
 
 justify-content:flex-start;
+
+@media (max-width:767px){
+    flex-direction:row;
+}
 `
 
 const Button = styled.div`
@@ -85,10 +94,49 @@ i{  color:white;
 }
 
 `
+
+
+const LoadingGIF = styled.div`
+
+display:${props => props.loading === true ? 'block;' : 'none;'};
+
+position:absolute;
+top:0;
+bottom:0;
+left:0;
+right:0;
+
+
+
+
+div{
+width:100%;
+height:100%;
+display:flex;
+background-color:rgba(30 , 30 ,30 , 0.9);
+flex-direction:column ;
+justify-content:center;
+align-items:center;
+}     
+`
+
+const Loader = styled.div`
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  max-width: 120px;
+  max-height: 120px;
+  animation: spin 2s linear infinite;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+`
 export default function SignPage(props) {
 
     const [canvasRef, setCanvasRef] = useState(null);
     const [contextRef, setContextRef] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [file, setFile] = useState({ file: null });
 
 
@@ -114,6 +162,9 @@ export default function SignPage(props) {
     }
 
     async function printCanvas() {
+
+        setLoading(true);
+
         const canvasURL = canvasRef.current.toDataURL("image/png");
         const FileData = new FormData();
         const canvasFile = await dataURItoBlob(canvasURL);
@@ -126,6 +177,14 @@ export default function SignPage(props) {
             .catch(err => alert('Something went wrong'));
 
 
+        setTimeout(() => {
+            setLoading(false);
+        }, 0);
+
+        if (res.status === 200) {
+            clean();
+        }
+
 
 
     }
@@ -135,8 +194,15 @@ export default function SignPage(props) {
 
     return (
         <Container>
+
+            <LoadingGIF loading={loading}>
+                <div>
+                    <Loader />
+                </div>
+
+            </LoadingGIF>
             <NavTab >
-                <Canvas setRef={setRef} />
+                <Canvas setRef={setRef} loading={loading} />
             </NavTab>
             <ButtonRow><Button><NavLink to="/main"><i className="fas fa-home"></i></NavLink></Button>
                 <Button onClick={clean}><i className="far fa-broom"></i></Button>

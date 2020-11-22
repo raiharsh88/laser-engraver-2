@@ -10,8 +10,8 @@ const Canvas = function (props) {
     useEffect(() => {
 
         const canvas = canvasRef.current;
-        canvas.width = canvasRef.current.parentNode.clientWidth;
-        canvas.height = canvasRef.current.parentNode.clientHeight;
+        canvas.width = canvasRef.current.parentNode.clientWidth * 2;
+        canvas.height = canvasRef.current.parentNode.clientHeight * 2;
         canvas.style.width = `${canvasRef.current.parentNode.clientWidth}px`;
         canvas.style.height = `${canvasRef.current.parentNode.clientHeight}px`;
 
@@ -20,9 +20,8 @@ const Canvas = function (props) {
 
         context.scale(1, 1);
         context.lineCap = "round";
-        context.strokeStyle = "black";
+        context.strokeStyle = "white";
         context.lineWidth = 6;
-        context.fillStyle = 'blue';
         context.globalAlpha = 1;
 
         contextRef.current = context;
