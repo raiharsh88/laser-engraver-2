@@ -67,7 +67,7 @@ app.get("/check-file", (req, res) => {
   );
   const exists = fs.existsSync(destFolder);
 
-  return res.json({ err: "service unavailable" });
+  // return res.json({ err: "service unavailable" });
   if (!exists) {
     return res.status(200).json({ msg: "file not found" });
   } else {
@@ -75,13 +75,15 @@ app.get("/check-file", (req, res) => {
   }
 });
 
+let printing = false;
+
 app.get("/new-file", (req, res) => {
   const destFolder = path.join(
     __dirname,
     "../public/images/uploads/sample1.png"
   );
 
-  return res.json({ err: "service unavailable" });
+  printing = true;
   const exists = fs.existsSync(destFolder);
   if (!exists) {
     return res.status(200).json({ msg: "file not found" });
@@ -89,6 +91,25 @@ app.get("/new-file", (req, res) => {
   res.sendFile(destFolder, (err) => {
     fs.unlinkSync(destFolder);
   });
+});
+
+app.get("/new", (req, res) => {
+  printing = false;
+
+  res.json({ msg: "ok" });
+});
+app.get("/is-printing", (req, res) => {
+  if (printing === true) {
+    res.json({ msg: "yes" });
+  } else {
+    res.json({ msg: "no" });
+  }
+});
+
+app.get("/finished", (req, res) => {
+  res.json({ msg: "ok" });
+
+  printing = false;
 });
 
 app.listen(PORT, () => {

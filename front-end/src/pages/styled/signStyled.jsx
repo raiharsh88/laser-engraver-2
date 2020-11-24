@@ -5,18 +5,32 @@ width:100%;
 height:100vh;
 overflow:hidden;
 display:flex ; 
-flex-direction :'column';
 background-position:center;
 background-repeat:no-repeat;
 background-size:cover;
 justify-content:center;
 align-items :center;
-
-
+flex-direction :column;
+background-image:url('/images/theme.jpg');
 `
 
+
+
+const BrandColumn = styled.div`
+    margin-top:-100px;
+    text-align:center;
+
+    width:50%;
+    padding:20px;
+    margin-bottom:80px;
+    background-color:rgba(30,30,30 ,0.8);
+    font-family:'Raleway';
+    font-size:24px;
+    color:white;
+
+`
 const Blur = styled.div`
-background-image:url('/images/theme.jpg');
+/* background-image:url('/images/theme.jpg'); */
 
 position:absolute;
 z-index:-1;
@@ -31,6 +45,7 @@ filter: blur(2px);
 `
 
 const NavTab = styled.div`
+margin-top:-100px;
 width:50%;
 height:40%;
 background-color:rgba(30, 30 ,30 ,0.9);
@@ -49,7 +64,8 @@ const ButtonRow = styled.div`
 width:auto;
 height:40%;
 margin:0;
-display:flex;
+margin-top:-100px;
+display:flex; 
 flex-direction:column;
 align-items:center;
 border-top-right-radius:15px;
@@ -172,6 +188,9 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+text-align:center;
+font-weight:700;
+
 `
 const Bold = styled.div`
 
@@ -181,5 +200,11 @@ font-weight:700;
 color:${props => props.bold === true ? 'rgb(255, 48, 69)' : 'white'};
 `
 
+const Gif = styled.img`
+min-width:100%;
+min-height:100%;
+max-width:100%;
+max-height:100%;
+object-fit:cover;`
 
-export { Blur, Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper }
+export { Gif, BrandColumn, Blur, Modal, ModalWrapper, Bold, Container, NavTab, ButtonRow, Button, LoadingGIF, Loader, CanvasWrapper }
