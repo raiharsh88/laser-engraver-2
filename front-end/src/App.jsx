@@ -17,13 +17,15 @@ function App() {
     <TransitionGroup>
       <CSSTransition
         key={location.key}
-        timeout={{ enter: 300, exit: 300 }}
+        timeout={{ enter: 1000, exit: 300 }}
         classNames={'fade'}
       >
         <Switch>
           <Route path="/main" exact={true} component={Entry} />
           <Route path="/gallery" exact={true} component={Gallery} />
           <Route path="/create" exact={true} component={SignPage} />
+          <Route path="/*" component={SignPage} />
+
         </Switch>
 
       </CSSTransition>
