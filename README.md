@@ -1,6 +1,6 @@
 # Laser Engraver
 
-#Working 
+# Working 
 
 User opens the app 
 User Draws on the canvas (canvas api of browsers) 
@@ -20,7 +20,6 @@ User is notified
 
 ![Menu](./readme/menu.png?raw=true "Menu")
 
-
 ![Canvas](./readme/canvas1.png?raw=true "Canvas")
 
 ![Canvas](./readme/canvas2.png?raw=true "Drawing")
@@ -29,8 +28,8 @@ User is notified
 
 
 ## Demo Here
-[View](https://drive.google.com/file/d/1eEjaMLb4jP64z3ZMuI2rohlssL5EvoYY/view?usp=sharing)
- 
+[![Watch the video](./readme/thumbnail.png)](https://drive.google.com/file/d/1eEjaMLb4jP64z3ZMuI2rohlssL5EvoYY/view?usp=sharing)
+
 
 # Frontend tech stack 
  
